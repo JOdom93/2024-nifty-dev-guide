@@ -218,6 +218,7 @@ pre.editor-colors .fold-marker:after {
               Development</li></a>
           <a href="#basic-shortcodes"><li>Basic Shortcodes</li></a>
           <a href="#wrapping-shortcodes"><li>Wrapping Shortcodes</li></a>
+          <a href="#wrapping-shortcodes-modified-content"><li>$Modified_Content</li></a>
           <a href="#embedding-styles-in-shortcodes"><li>Embedding Styles In
               Shortcodes</li></a>
           <a href="#shortcode-coding-priority"><li>Shortcode Coding Priority</li></a>
@@ -456,10 +457,13 @@ pre.editor-colors .fold-marker:after {
             closing bracket tag.</p>
           <p>Example:</p>
           <pre class="editor-colors lang-a"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">[internal_fullwidth]</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">Content goes here.</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">[/internal_fullwidth]</span></div></pre>
-          <h4 id="wrapping-shortcodes">Wrapping Shortcodes using
+          <h4 id="wrapping-shortcodes-modified-content">Wrapping Shortcodes
+            using
             $modified_content for lazyloading images</h4>
           <p>To utilize adding media library files directly to the page editor.
-            You will need to implement the global variable <code
+            without having to create another shortcode to lazyload an image.
+            You will need to implement the global variable when creating your
+            shortcode. <code
               style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
               &quot;DejaVu Sans Mono&quot;, monospace;">$modified_content</code>
             This will follow the same structure as a normal Wrapping shortcode
@@ -475,6 +479,8 @@ pre.editor-colors .fold-marker:after {
             the "src" attribute to "data-url" to follow our lazyloading
             practices</p>
           <pre class="editor-colors lang-a"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;?php $atts = shortcode_atts(array(</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">    </span>'' =&gt; ''</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">), $atts); ?&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;section class="internal-fullwidth section-padding"&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">    </span>&lt;?php echo '&lt;div class="content-width"&gt;'.$modified_content.'&lt;/div&gt;'; ?&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;/section&gt;</span></div></pre>
+          <img src="assets/modified-content-use.png">
+
           <h4 id="embedding-styles-in-shortcodes">Embedding Styles In Shortcodes</h4>
           <p>If the shortcode you are creating will be displayed above-the-fold,
             you should include the styles immediately before the rendering code:</p>
