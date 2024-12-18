@@ -478,14 +478,6 @@ pre.editor-colors .fold-marker:after {
             improve load time. You can do this by adding the following snippet
             after the rendering code.</p>
           <pre class="editor-colors lang-a"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">/* Rendering Code Goes Here */</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;?php if(!function_exists('apply_internal_fullwidth_styles')){</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">    </span>function apply_internal_fullwidth_styles(){ ?&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">        </span>&lt;style&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">      </span>/* Section specific CSS Rules go here */</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">        </span>&lt;/style&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">    </span>&lt;?php }</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">    </span>add_action( 'wp_footer', 'apply_internal_fullwidth_styles' );</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">}?&gt;</span></div></pre>
-          <h4 id="shortcode-coding-priority">Shortcode Coding Priority</h4>
-          <p>The first parts of the site to develop should be the <code
-              style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
-              &quot;DejaVu Sans Mono&quot;, monospace;">internal-banner.php</code>
-            and the <code style="font-family: &quot;Operator Mono&quot;, Menlo,
-              Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">home-banner.php</code>.
-            These files represent the above the fold banners used on the
-            homepage and the rest of the site.</p>
           <h3 id="modifying-styles">Modifying Styles</h3>
           <p>To optimize page speed, CSS rules should not be loaded if they are
             not used on a particular page. We accomplish this by tying CSS to
@@ -502,11 +494,6 @@ pre.editor-colors .fold-marker:after {
             <li><code style="font-family: &quot;Operator Mono&quot;, Menlo,
                 Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">footer.php</code>
               : Animation and global below-the-fold styles should go here</li>
-            <div class="warning">Note: The last two animation classes must
-              remain at the end of the footer <code style="font-family:
-                &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans
-                Mono&quot;, monospace;">&lt;style&gt;</code> section to prevent
-              breaking of the animation framework.</div>
             <li>Individual shortcodes: section specific styles should be placed
               with the individual shortcodes. You can either have them before
               the code if the section is visible above the fold, or loaded in
@@ -590,77 +577,8 @@ pre.editor-colors .fold-marker:after {
               &quot;DejaVu Sans Mono&quot;, monospace;">/searchform.php</code>
             file. All customizations to the visual layout can be added here.</p>
           <h2 id="built-in-features">Built-In Features</h2>
-          <h3 id="animation-framework">Animation Framework</h3>
-          <p>The Nifty 2024 Theme introduces a custom scrolling animation
-            interface to simplify scroll animations for developers. By adding
-            classes to items you want to be animated, you can focus on crafting
-            custom animations without messing with JavaScript.</p>
-          <h4 id="basic-usage">Basic Usage</h4>
-          <ol>
-            <li>Add an <code style="font-family: &quot;Operator Mono&quot;,
-                Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">animateable</code>
-              class to any element you want to be animated. This class is
-              monitored by the animation interface and will add a class of <code
-                style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
-                &quot;DejaVu Sans Mono&quot;, monospace;">render</code> if the
-              element is currently visible within the browser viewport.</li>
-            <li>Add a custom CSS class describing the starting point of the
-              animation. For example, you can add a class called <code
-                style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
-                &quot;DejaVu Sans Mono&quot;, monospace;">slideLeft</code> and
-              define it in CSS. Your goal with your custom CSS classes is to
-              define the beginning point of the animation using <code
-                style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
-                &quot;DejaVu Sans Mono&quot;, monospace;">transform</code> or
-              <code style="font-family: &quot;Operator Mono&quot;, Menlo,
-                Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">opacity</code>
-              properties. Once the <code style="font-family: &quot;Operator
-                Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;,
-                monospace;">render</code> class is added automatically after the
-              element is scrolled into view, the transform and opacity of the
-              element will be <code style="font-family: &quot;Operator
-                Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;,
-                monospace;">unset</code>. This allows the element to move from
-              your defined starting point to it's original placement in the DOM.</li>
-          </ol>
-          <h4 id="staggered-animations">Staggered Animations</h4>
-          <ol>
-            <li>If you want multiple items to be animated as a group in a
-              staggered fashion, add the <code style="font-family:
-                &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans
-                Mono&quot;, monospace;">animateable</code> and <code
-                style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas,
-                &quot;DejaVu Sans Mono&quot;, monospace;">grouped</code> class
-              to parent div.</li>
-            <li>For each child element add a <code style="font-family:
-                &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans
-                Mono&quot;, monospace;">data-delay</code> attribue with the
-              appropriate delay you want for the sequence</li>
-          </ol>
-          <p>Example:</p>
-          <pre class="editor-colors lang-a"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;div class="animateable grouped"&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">  </span>&lt;span data-delay="0ms" class="slideLeft wrapped"&gt;1&lt;/span&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">  </span>&lt;span data-delay="150ms" class="slideRight wrapped"&gt;2&lt;/span&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span class="leading-whitespace">  </span>&lt;span data-delay="300ms" class="slideLeft wrapped"&gt;3&lt;/span&gt;</span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar">&lt;/div&gt;</span></div></pre>
-          <h4 id="other-built-in-options">Other Built-In Options</h4>
-          <ol start="3">
-            <li>You can add the following additional preset classes to customize
-              animations further.</li>
-          </ol>
-          <ul>
-            <li><code style="font-family: &quot;Operator Mono&quot;, Menlo,
-                Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">infinite</code>:
-              dictates whether the animation should re-trigger with up-and-down
-              scrolling.</li>
-            <li><code style="font-family: &quot;Operator Mono&quot;, Menlo,
-                Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">wrapped</code>:
-              Offers the ability to constrain animation bounds to a parent
-              element.
-              <li><code style="font-family: &quot;Operator Mono&quot;, Menlo,
-                  Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">grouped</code>:
-                Allow staggered animation with offset delays</li>
-            </ul>
-            <div class="warning">NOTE: Items with the <code>wrapped</code> class
-              can be finicky if not combined with the <code>grouped</code> class
-              as newer implementations of IntersectionObserver will not respect
-              monitoring of elements that overflow.</div>
+            <h3>Animations</h3>
+            <p>TODO: Add in instructions for new animation usage</p>
             <h3 id="built-in-inline-svgs">Built-In Inline SVGs</h3>
             <p>In the Nifty 2022 theme, SVGs can be inserted inline with a
               custom shortcode that allows for setting size and color
