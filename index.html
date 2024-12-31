@@ -581,16 +581,18 @@ pre.editor-colors .fold-marker:after {
             <p>Animations have a intersection observer, looking for the class <code style="font-family: &quot;Operator Mono&quot;, Menlo,
                 Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.transition</code> this class has a CSS value of "transition:ease 1s;". Once the element with that class enters the viewport we add the class <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.active</code> which will start the elements animation. We can define those animations in a specifc shortcode file or in style.css (if animation is used frequently). By Default our theme's style.css now has the classes listed below that would define the animation:
               </p>
-<code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.transition</code>
-          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-left{opacity:0; transform:translate(-100%, 0);}</code>
-          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-right{opacity:0; transform:translate(100%, 0);}</code>
-          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-up{opacity:0; transform:translate(0, 100%);}</code>
-          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-down{opacity:0; transform:translate(0, -100%);}</code>
-          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.ghost-in{opacity:0;}</code>
-
+          <ul>
+<li><code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.transition</code></li>
+         <li> <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-left{opacity:0; transform:translate(-100%, 0);}</code></li>
+          <li><code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-right{opacity:0; transform:translate(100%, 0);}</code></li>
+          <li><code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-up{opacity:0; transform:translate(0, 100%);}</code></li>
+          <li><code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-down{opacity:0; transform:translate(0, -100%);}</code></li>
+          <li><code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.ghost-in{opacity:0;}</code></li>
+</ul>
          <p>These classes can be added directly in the wordpress "Additional CSS class(es)" text box in the page editor. </p> 
-        <img src="" />
-          
+        <img src="assets/additional-classes-example.png">
+
+<p>By default these animation will happen every time the element is in the viewport scrolling down and up. If you want the animation to only happen one time on the initial intersection. Add the class <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">once</code> in this same text box.</p>
             <h3 id="built-in-inline-svgs">Built-In Inline SVGs</h3>
             <p>In the Nifty 2022 theme, SVGs can be inserted inline with a
               custom shortcode that allows for setting size and color
