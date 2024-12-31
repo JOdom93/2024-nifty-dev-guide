@@ -577,8 +577,20 @@ pre.editor-colors .fold-marker:after {
               &quot;DejaVu Sans Mono&quot;, monospace;">/searchform.php</code>
             file. All customizations to the visual layout can be added here.</p>
           <h2 id="built-in-features">Built-In Features</h2>
-            <h3>Animations</h3>
-            <p>TODO: Add in instructions for new animation usage</p>
+            <h3>UPDATED Animations</h3>
+            <p>Animations have a intersection observer, looking for the class <code style="font-family: &quot;Operator Mono&quot;, Menlo,
+                Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.transition</code> this class has a CSS value of "transition:ease 1s;". Once the element with that class enters the viewport we add the class <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.active</code> which will start the elements animation. We can define those animations in a specifc shortcode file or in style.css (if animation is used frequently). By Default our theme's style.css now has the classes listed below that would define the animation:
+              </p>
+<code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.transition</code>
+          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-left{opacity:0; transform:translate(-100%, 0);}</code>
+          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-right{opacity:0; transform:translate(100%, 0);}</code>
+          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-up{opacity:0; transform:translate(0, 100%);}</code>
+          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.fade-down{opacity:0; transform:translate(0, -100%);}</code>
+          <code style="font-family: &quot;Operator Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.ghost-in{opacity:0;}</code>
+
+         <p>These classes can be added directly in the wordpress "Additional CSS class(es)" text box in the page editor. </p> 
+        <img src="" />
+          
             <h3 id="built-in-inline-svgs">Built-In Inline SVGs</h3>
             <p>In the Nifty 2022 theme, SVGs can be inserted inline with a
               custom shortcode that allows for setting size and color
