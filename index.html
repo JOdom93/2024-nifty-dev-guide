@@ -749,25 +749,17 @@ pre.editor-colors .fold-marker:after {
                   href="https://googlechrome.github.io/lighthouse/scorecalc/#FCP=1735&amp;TTI=5848&amp;SI=1836&amp;TBT=142&amp;LCP=3604&amp;CLS=0.08&amp;FMP=2055&amp;device=mobile&amp;version=9.6.6">https://googlechrome.github.io/lighthouse/scorecalc/#FCP=1735&amp;TTI=5848&amp;SI=1836&amp;TBT=142&amp;LCP=3604&amp;CLS=0.08&amp;FMP=2055&amp;device=mobile&amp;version=9.6.6</a></li>
             </ul>
             <h3 id="lazy-loading-forms">Lazy Loading Forms</h3>
-            <p>Lazy Loading can be done with the included <code>Blank</code>
-              template. We may be able to continue to use AJAX assuming scripts
-              pull in - but further testing is needed. Google Analytics will not
-              be loaded to pages using the <code>Blank</code> template.</p>
+            <p>Lazy Loading forms starts with creating a new template file at the top level of file structure of the child theme. Naming convention for this should be AJAX-form-{form_id}.php. The theme provides your first template file "AJAX-form-1.php" use this as a reference for futher forms that will need to be created. When creating a new form template make sure you update the ID of the form that will be used in the shortcode <code style="font-family: &quot;Operator
+                    Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;,
+                    monospace;">[gravityform id="{form_id}" title="false" description="false" ajax="false"]</code> The ID of the form is found in the gravity form's admin tab next to the name of the form you are going to be using. We also want to change the template name located at the top of the .php file to match the forms identity (name or it's ID).</p>
             <ul>
-              <li><p>Create a new page using the provided <code
-                    style="font-family: &quot;Operator Mono&quot;, Menlo,
-                    Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">Blank</code>
-                  template and call in the desired form using this format: <code
-                    style="font-family: &quot;Operator Mono&quot;, Menlo,
-                    Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">[gravityform
-                    id="1" title="false" description="false" ajax="false"]</code></p>
-              </li>
+              <li><p>Create a new page using the newly created AJAX-form-{form_id).php file as the page template. You can choose the page template in the page editors sidebar here:</p> <img src="assets/page-template-location.png" /></li>
               <li><p>Mark the page as <code style="font-family: &quot;Operator
                     Mono&quot;, Menlo, Consolas, &quot;DejaVu Sans Mono&quot;,
                     monospace;">noindex</code> in the Yoast settings.</p>
               </li>
               <img src="assets/page-indexing.png">
-              <li><p>Update the confirmation of the desired form to redirect to
+              <li><p>In gravity forms settings for the desired form update the confirmation to redirect to
                   the same page, but with a query parameter of <code
                     style="font-family: &quot;Operator Mono&quot;, Menlo,
                     Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">redirect=true</code>
@@ -780,11 +772,12 @@ pre.editor-colors .fold-marker:after {
               <li>Embed the URL of the newly created form page using an iframe.
                 <code style="font-family: &quot;Operator Mono&quot;, Menlo,
                   Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;iframe
-                  width=”700” height=”500px”
+                  width=”700” height=”500px” class="resizable"
                   data-url="https://niftyrocket.com/amador/lazy-form/"&gt;&lt;/iframe&gt;</code></li>
             </ul>
-            <p>Adjust the width and height to compensate for CLS and maintain
-              aspect ratio, depending on the form source you are loading.</p>
+            <p>Make sure to add the class  <code
+                    style="font-family: &quot;Operator Mono&quot;, Menlo,
+                    Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.resizable</code> to the Iframe this class will automatically resize the iframe after the form has been loaded. Width and Height are not necessary, but will give the iframe a default height before the form is loaded.</p>
             <h3 id="font-loading">Font Loading</h3>
             <p>Below are general font loading guidelines:</p>
             <ul>
@@ -1273,16 +1266,9 @@ pre.editor-colors .fold-marker:after {
                     site design.</td>
                 </tr>
                 <tr>
-                  <td>link.php</td>
+                  <td>lazy-iframe-block.php</td>
                   <td>template-parts/blocks</td>
-                  <td>If some links should work/act in a certain way on the
-                    site, use this php template file to display them.</td>
-                </tr>
-                <tr>
-                  <td>text.php</td>
-                  <td>template-parts/blocks</td>
-                  <td>If some stylized text is used over and over, consider
-                    using this file via shortcode to generate it.</td>
+                  <td>A default shortcode for lazy loading videos and forms.</td>
                 </tr>
                 <tr>
                   <td>contact.php</td>
